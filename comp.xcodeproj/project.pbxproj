@@ -27,7 +27,6 @@
 		1F7EC2CB1724594800465DCD /* libKal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7EC2C417244FA700465DCD /* libKal.a */; };
 		1F7EC2CF1724755C00465DCD /* CRosterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EC2CE1724755C00465DCD /* CRosterViewController.m */; };
 		1F7EC2DB1724C54500465DCD /* CPlayerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EC2DA1724C54400465DCD /* CPlayerCell.m */; };
-		1F7EC2F11724CE4E00465DCD /* 360ControllerInstall.dmg in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EC2E61724CE4E00465DCD /* 360ControllerInstall.dmg */; };
 		1F7EC2F91724D22000465DCD /* plus-5-m.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EC2F81724D22000465DCD /* plus-5-m.png */; };
 		1F7EC2FB1724D22F00465DCD /* minus-5-m.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EC2FA1724D22F00465DCD /* minus-5-m.png */; };
 /* End PBXBuildFile section */
@@ -83,7 +82,6 @@
 		1F7EC2CE1724755C00465DCD /* CRosterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRosterViewController.m; sourceTree = "<group>"; };
 		1F7EC2D91724C54400465DCD /* CPlayerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPlayerCell.h; sourceTree = "<group>"; };
 		1F7EC2DA1724C54400465DCD /* CPlayerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPlayerCell.m; sourceTree = "<group>"; };
-		1F7EC2E61724CE4E00465DCD /* 360ControllerInstall.dmg */ = {isa = PBXFileReference; lastKnownFileType = file; path = 360ControllerInstall.dmg; sourceTree = "<group>"; };
 		1F7EC2F81724D22000465DCD /* plus-5-m.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-5-m.png"; sourceTree = "<group>"; };
 		1F7EC2FA1724D22F00465DCD /* minus-5-m.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "minus-5-m.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -167,7 +165,6 @@
 			children = (
 				1F7EC2FA1724D22F00465DCD /* minus-5-m.png */,
 				1F7EC2F81724D22000465DCD /* plus-5-m.png */,
-				1F7EC2E61724CE4E00465DCD /* 360ControllerInstall.dmg */,
 				1F7EC28217237BB100465DCD /* comp-Info.plist */,
 				1F7EC28817237BB100465DCD /* comp-Prefix.pch */,
 				1F7EC29017237BB100465DCD /* Default-568h@2x.png */,
@@ -310,7 +307,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F7EC2B317237BB100465DCD /* InfoPlist.strings in Resources */,
-				1F7EC2F11724CE4E00465DCD /* 360ControllerInstall.dmg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

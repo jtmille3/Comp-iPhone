@@ -10,7 +10,7 @@
 #import "CPlayerCell.h"
 
 @interface CRosterViewController ()
-- (void) updateScore;
+- (void) played;
 - (void) updateGoalForPlayer:(NSNumber*)playerId game:(NSNumber*)gameId method:(NSString*)method;
 @end
 
@@ -34,6 +34,11 @@
             NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString: url]];
             NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
             [connection start];
+            
+            [self.game setValue:[NSNumber numberWithBool:YES] forKey:@"available"];
+            /*
+            [self played];
+             */
         } else {
             self.homePlayers = homePlayers;
             self.awayPlayers = awayPlayers;
@@ -206,7 +211,6 @@
     
     [self.tableView reloadData];
     
-    [self updateScore];
     [self updateGoalForPlayer:[player valueForKey:@"playerId"] game:[self.game valueForKey:@"gameId"] method:@"POST"];
 }
 
@@ -235,11 +239,10 @@
     }
     [self.tableView reloadData];
     
-    [self updateScore];
     [self updateGoalForPlayer:[player valueForKey:@"playerId"] game:[self.game valueForKey:@"gameId"] method:@"DELETE"];
 }
 
-- (void) updateScore
+- (void) played
 {
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self.game options:NSJSONWritingPrettyPrinted error:&error];

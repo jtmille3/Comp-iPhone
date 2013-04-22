@@ -8,12 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol RosterDelegate <NSObject>
-
-- (NSString*) homeScore:(NSInteger)homeScore awayScore:(NSInteger)awayScore;
-
-@end
-
 @protocol PlayerDelegate <NSObject>
 
 - (void) addGoal: (NSMutableDictionary*)player;
@@ -24,7 +18,6 @@
 @interface CRosterViewController : UITableViewController<NSURLConnectionDataDelegate,PlayerDelegate>
 
 @property (strong, nonatomic) NSMutableDictionary *game;
-@property (strong, nonatomic) id<RosterDelegate> delegate;
 
 @property (strong, nonatomic) NSMutableData *buffer;
 @property (strong, nonatomic) NSMutableArray *homePlayers;
