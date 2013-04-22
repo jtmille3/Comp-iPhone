@@ -8,30 +8,28 @@
 
 #import "CAppDelegate.h"
 
-#import "CMasterViewController.h"
+#import "CRosterViewController.h"
 
 @implementation CAppDelegate
 
-@synthesize managedObjectContext = _managedObjectContext;
-@synthesize managedObjectModel = _managedObjectModel;
-@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.buffer = [[NSMutableData alloc] init];
     // Override point for customization after application launch.
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
-        splitViewController.delegate = (id)navigationController.topViewController;
-        
-        UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
-        CMasterViewController *controller = (CMasterViewController *)masterNavigationController.topViewController;
-        controller.managedObjectContext = self.managedObjectContext;
-    } else {
-        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-        CMasterViewController *controller = (CMasterViewController *)navigationController.topViewController;
-        controller.managedObjectContext = self.managedObjectContext;
-    }
+
+    self.navigationController = [[UINavigationController alloc] init];
+    self.window.rootViewController = self.navigationController;
+    
+    self.calendarController = [[KalViewController alloc] init];
+    self.calendarController.dataSource = self;
+    self.calendarController.delegate = self;
+    self.calendarController.title = @"Soccer Calendar";
+    [self.navigationController pushViewController:self.calendarController animated:YES];
+    
+    NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:8080/service/games"]];
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    [connection start];
+    
     return YES;
 }
 							
@@ -63,91 +61,8 @@
     [self saveContext];
 }
 
-- (void)saveContext
-{
-    NSError *error = nil;
-    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
-    if (managedObjectContext != nil) {
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-             // Replace this implementation with code to handle the error appropriately.
-             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        } 
-    }
-}
-
-#pragma mark - Core Data stack
-
-// Returns the managed object context for the application.
-// If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
-- (NSManagedObjectContext *)managedObjectContext
-{
-    if (_managedObjectContext != nil) {
-        return _managedObjectContext;
-    }
+- (void) saveContext {
     
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (coordinator != nil) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
-        [_managedObjectContext setPersistentStoreCoordinator:coordinator];
-    }
-    return _managedObjectContext;
-}
-
-// Returns the managed object model for the application.
-// If the model doesn't already exist, it is created from the application's model.
-- (NSManagedObjectModel *)managedObjectModel
-{
-    if (_managedObjectModel != nil) {
-        return _managedObjectModel;
-    }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"comp" withExtension:@"momd"];
-    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-    return _managedObjectModel;
-}
-
-// Returns the persistent store coordinator for the application.
-// If the coordinator doesn't already exist, it is created and the application's store added to it.
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
-{
-    if (_persistentStoreCoordinator != nil) {
-        return _persistentStoreCoordinator;
-    }
-    
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"comp.sqlite"];
-    
-    NSError *error = nil;
-    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-         
-         Typical reasons for an error here include:
-         * The persistent store is not accessible;
-         * The schema for the persistent store is incompatible with current managed object model.
-         Check the error message to determine what the actual problem was.
-         
-         
-         If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
-         
-         If you encounter schema incompatibility errors during development, you can reduce their frequency by:
-         * Simply deleting the existing store:
-         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
-         
-         * Performing automatic lightweight migration by passing the following dictionary as the options parameter:
-         @{NSMigratePersistentStoresAutomaticallyOption:@YES, NSInferMappingModelAutomaticallyOption:@YES}
-         
-         Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
-         
-         */
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }    
-    
-    return _persistentStoreCoordinator;
 }
 
 #pragma mark - Application's Documents directory
@@ -156,6 +71,130 @@
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+#pragma mark NSURLConnection
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{ 
+    [self.buffer appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSError *error = nil;
+    self.json = [NSJSONSerialization JSONObjectWithData:self.buffer options:NSJSONReadingMutableContainers error:&error];
+    if(error) {
+        NSLog(@"%@", [error localizedDescription]);
+    } else {
+        [self.calendarController reloadData];
+    }
+}
+
+#pragma mark KalDataSource
+
+- (void)presentingDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate delegate:(id<KalDataSourceCallbacks>)delegate
+{
+    [delegate loadedDataSource:self];
+}
+
+- (NSArray *)markedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate
+{
+    if(!self.json) {
+        return nil;
+    }
+    
+    NSMutableArray *dates = [[NSMutableArray alloc] init];
+    const NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+    [fmt setDateFormat:@"MM/dd/yy hh:mm"];
+
+    for(const NSDictionary *value in self.json) {
+        //id value = [self.json valueForKey:key];
+        NSDate *date = [fmt dateFromString:[value valueForKey:@"played"]];
+        [dates addObject:date];
+    }
+    
+    return dates;
+}
+
+- (void)loadItemsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate
+{
+    if(!self.json) {
+        self.games = nil;
+        return;
+    }
+    
+    self.games = [[NSMutableArray alloc] init];
+    NSDate *selectedDate = [self.calendarController selectedDate];
+    
+    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+    [fmt setDateFormat:@"MM/dd/yy hh:mm"];
+    
+    for(const NSDictionary *value in self.json) {
+        NSDate *date = [fmt dateFromString:[value valueForKey:@"played"]];
+        unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+        NSCalendar* calendar = [NSCalendar currentCalendar];
+        NSDateComponents* components = [calendar components:flags fromDate:date];
+        NSDate* dateOnly = [calendar dateFromComponents:components];
+        
+        if([selectedDate isEqualToDate:dateOnly]) {
+            [self.games addObject: value];
+        }
+    }
+}
+
+- (void)removeAllItems
+{
+
+}
+
+#pragma mark UITableViewDelegate protocol conformance
+
+// Display a details screen for the selected holiday/row.
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSMutableDictionary *game = [self.games objectAtIndex:indexPath.item];
+    CRosterViewController *rosterViewController = [[CRosterViewController alloc] initWithStyle:UITableViewStylePlain game:game];
+    [self.navigationController pushViewController:rosterViewController animated:YES];
+}
+
+#pragma mark UITableViewDataSource protocol conformance
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    const NSDictionary *game = [self.games objectAtIndex:indexPath.item];
+    
+    static NSString* CellIdentifier = @"Game";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if(!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    NSString *home = [game valueForKey:@"home"];
+    NSString *away = [game valueForKey:@"away"];
+    
+    NSNumber *homeScore = [game valueForKey:@"homeScore"];
+    NSNumber *awayScore = [game valueForKey:@"awayScore"];
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ vs %@", home, away];
+    NSNumber *available = [game valueForKey:@"available"];
+    if([available boolValue]) {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", homeScore, awayScore];
+    } else {
+        cell.detailTextLabel.text = @"TBD";
+    }
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if(!self.json) {
+        return 0;
+    }
+    
+    return [self.games count];
 }
 
 @end

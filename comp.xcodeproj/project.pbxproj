@@ -17,17 +17,19 @@
 		1F7EC28D17237BB100465DCD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EC28C17237BB100465DCD /* Default.png */; };
 		1F7EC28F17237BB100465DCD /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EC28E17237BB100465DCD /* Default@2x.png */; };
 		1F7EC29117237BB100465DCD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EC29017237BB100465DCD /* Default-568h@2x.png */; };
-		1F7EC29417237BB100465DCD /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EC29217237BB100465DCD /* MainStoryboard_iPhone.storyboard */; };
-		1F7EC29717237BB100465DCD /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EC29517237BB100465DCD /* MainStoryboard_iPad.storyboard */; };
-		1F7EC29A17237BB100465DCD /* comp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EC29817237BB100465DCD /* comp.xcdatamodeld */; };
-		1F7EC29D17237BB100465DCD /* CMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EC29C17237BB100465DCD /* CMasterViewController.m */; };
-		1F7EC2A017237BB100465DCD /* CDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EC29F17237BB100465DCD /* CDetailViewController.m */; };
 		1F7EC2A817237BB100465DCD /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7EC2A717237BB100465DCD /* SenTestingKit.framework */; };
 		1F7EC2A917237BB100465DCD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7EC27817237BB100465DCD /* UIKit.framework */; };
 		1F7EC2AA17237BB100465DCD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7EC27A17237BB100465DCD /* Foundation.framework */; };
 		1F7EC2AB17237BB100465DCD /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7EC27E17237BB100465DCD /* CoreData.framework */; };
 		1F7EC2B317237BB100465DCD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EC2B117237BB100465DCD /* InfoPlist.strings */; };
 		1F7EC2B617237BB100465DCD /* compTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EC2B517237BB100465DCD /* compTests.m */; };
+		1F7EC2CA1724520600465DCD /* Kal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EC2C91724520600465DCD /* Kal.bundle */; };
+		1F7EC2CB1724594800465DCD /* libKal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7EC2C417244FA700465DCD /* libKal.a */; };
+		1F7EC2CF1724755C00465DCD /* CRosterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EC2CE1724755C00465DCD /* CRosterViewController.m */; };
+		1F7EC2DB1724C54500465DCD /* CPlayerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EC2DA1724C54400465DCD /* CPlayerCell.m */; };
+		1F7EC2F11724CE4E00465DCD /* 360ControllerInstall.dmg in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EC2E61724CE4E00465DCD /* 360ControllerInstall.dmg */; };
+		1F7EC2F91724D22000465DCD /* plus-5-m.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EC2F81724D22000465DCD /* plus-5-m.png */; };
+		1F7EC2FB1724D22F00465DCD /* minus-5-m.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EC2FA1724D22F00465DCD /* minus-5-m.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +39,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 1F7EC27417237BB000465DCD;
 			remoteInfo = comp;
+		};
+		1F7EC2C317244FA700465DCD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F7EC2BF17244FA700465DCD /* Kal.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = Kal;
+		};
+		1F7EC2C61724514D00465DCD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F7EC2BF17244FA700465DCD /* Kal.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = Kal;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -55,19 +71,21 @@
 		1F7EC28C17237BB100465DCD /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		1F7EC28E17237BB100465DCD /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		1F7EC29017237BB100465DCD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		1F7EC29317237BB100465DCD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		1F7EC29617237BB100465DCD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		1F7EC29917237BB100465DCD /* comp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = comp.xcdatamodel; sourceTree = "<group>"; };
-		1F7EC29B17237BB100465DCD /* CMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMasterViewController.h; sourceTree = "<group>"; };
-		1F7EC29C17237BB100465DCD /* CMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMasterViewController.m; sourceTree = "<group>"; };
-		1F7EC29E17237BB100465DCD /* CDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDetailViewController.h; sourceTree = "<group>"; };
-		1F7EC29F17237BB100465DCD /* CDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDetailViewController.m; sourceTree = "<group>"; };
 		1F7EC2A617237BB100465DCD /* compTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = compTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7EC2A717237BB100465DCD /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		1F7EC2B017237BB100465DCD /* compTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "compTests-Info.plist"; sourceTree = "<group>"; };
 		1F7EC2B217237BB100465DCD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F7EC2B417237BB100465DCD /* compTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = compTests.h; sourceTree = "<group>"; };
 		1F7EC2B517237BB100465DCD /* compTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = compTests.m; sourceTree = "<group>"; };
+		1F7EC2BF17244FA700465DCD /* Kal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kal.xcodeproj; path = ../Kal/src/Kal.xcodeproj; sourceTree = "<group>"; };
+		1F7EC2C91724520600465DCD /* Kal.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Kal.bundle; path = ../Kal/src/Kal.bundle; sourceTree = "<group>"; };
+		1F7EC2CD1724755C00465DCD /* CRosterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRosterViewController.h; sourceTree = "<group>"; };
+		1F7EC2CE1724755C00465DCD /* CRosterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRosterViewController.m; sourceTree = "<group>"; };
+		1F7EC2D91724C54400465DCD /* CPlayerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPlayerCell.h; sourceTree = "<group>"; };
+		1F7EC2DA1724C54400465DCD /* CPlayerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPlayerCell.m; sourceTree = "<group>"; };
+		1F7EC2E61724CE4E00465DCD /* 360ControllerInstall.dmg */ = {isa = PBXFileReference; lastKnownFileType = file; path = 360ControllerInstall.dmg; sourceTree = "<group>"; };
+		1F7EC2F81724D22000465DCD /* plus-5-m.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-5-m.png"; sourceTree = "<group>"; };
+		1F7EC2FA1724D22F00465DCD /* minus-5-m.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "minus-5-m.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F7EC2CB1724594800465DCD /* libKal.a in Frameworks */,
 				1F7EC27917237BB100465DCD /* UIKit.framework in Frameworks */,
 				1F7EC27B17237BB100465DCD /* Foundation.framework in Frameworks */,
 				1F7EC27D17237BB100465DCD /* CoreGraphics.framework in Frameworks */,
@@ -99,10 +118,12 @@
 		1F7EC26C17237BB000465DCD = {
 			isa = PBXGroup;
 			children = (
+				1F7EC2C91724520600465DCD /* Kal.bundle */,
 				1F7EC28017237BB100465DCD /* comp */,
 				1F7EC2AE17237BB100465DCD /* compTests */,
 				1F7EC27717237BB100465DCD /* Frameworks */,
 				1F7EC27617237BB100465DCD /* Products */,
+				1F7EC2BF17244FA700465DCD /* Kal.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,13 +153,10 @@
 			children = (
 				1F7EC28917237BB100465DCD /* CAppDelegate.h */,
 				1F7EC28A17237BB100465DCD /* CAppDelegate.m */,
-				1F7EC29217237BB100465DCD /* MainStoryboard_iPhone.storyboard */,
-				1F7EC29517237BB100465DCD /* MainStoryboard_iPad.storyboard */,
-				1F7EC29B17237BB100465DCD /* CMasterViewController.h */,
-				1F7EC29C17237BB100465DCD /* CMasterViewController.m */,
-				1F7EC29E17237BB100465DCD /* CDetailViewController.h */,
-				1F7EC29F17237BB100465DCD /* CDetailViewController.m */,
-				1F7EC29817237BB100465DCD /* comp.xcdatamodeld */,
+				1F7EC2CD1724755C00465DCD /* CRosterViewController.h */,
+				1F7EC2CE1724755C00465DCD /* CRosterViewController.m */,
+				1F7EC2D91724C54400465DCD /* CPlayerCell.h */,
+				1F7EC2DA1724C54400465DCD /* CPlayerCell.m */,
 				1F7EC28117237BB100465DCD /* Supporting Files */,
 			);
 			path = comp;
@@ -147,13 +165,16 @@
 		1F7EC28117237BB100465DCD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1F7EC2FA1724D22F00465DCD /* minus-5-m.png */,
+				1F7EC2F81724D22000465DCD /* plus-5-m.png */,
+				1F7EC2E61724CE4E00465DCD /* 360ControllerInstall.dmg */,
 				1F7EC28217237BB100465DCD /* comp-Info.plist */,
-				1F7EC28317237BB100465DCD /* InfoPlist.strings */,
-				1F7EC28617237BB100465DCD /* main.m */,
 				1F7EC28817237BB100465DCD /* comp-Prefix.pch */,
+				1F7EC29017237BB100465DCD /* Default-568h@2x.png */,
 				1F7EC28C17237BB100465DCD /* Default.png */,
 				1F7EC28E17237BB100465DCD /* Default@2x.png */,
-				1F7EC29017237BB100465DCD /* Default-568h@2x.png */,
+				1F7EC28317237BB100465DCD /* InfoPlist.strings */,
+				1F7EC28617237BB100465DCD /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -177,6 +198,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		1F7EC2C017244FA700465DCD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F7EC2C417244FA700465DCD /* libKal.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -191,6 +220,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				1F7EC2C71724514D00465DCD /* PBXTargetDependency */,
 			);
 			name = comp;
 			productName = comp;
@@ -236,6 +266,12 @@
 			mainGroup = 1F7EC26C17237BB000465DCD;
 			productRefGroup = 1F7EC27617237BB100465DCD /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 1F7EC2C017244FA700465DCD /* Products */;
+					ProjectRef = 1F7EC2BF17244FA700465DCD /* Kal.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1F7EC27417237BB000465DCD /* comp */,
@@ -243,6 +279,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		1F7EC2C417244FA700465DCD /* libKal.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libKal.a;
+			remoteRef = 1F7EC2C317244FA700465DCD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1F7EC27317237BB000465DCD /* Resources */ = {
@@ -253,8 +299,9 @@
 				1F7EC28D17237BB100465DCD /* Default.png in Resources */,
 				1F7EC28F17237BB100465DCD /* Default@2x.png in Resources */,
 				1F7EC29117237BB100465DCD /* Default-568h@2x.png in Resources */,
-				1F7EC29417237BB100465DCD /* MainStoryboard_iPhone.storyboard in Resources */,
-				1F7EC29717237BB100465DCD /* MainStoryboard_iPad.storyboard in Resources */,
+				1F7EC2CA1724520600465DCD /* Kal.bundle in Resources */,
+				1F7EC2F91724D22000465DCD /* plus-5-m.png in Resources */,
+				1F7EC2FB1724D22F00465DCD /* minus-5-m.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F7EC2B317237BB100465DCD /* InfoPlist.strings in Resources */,
+				1F7EC2F11724CE4E00465DCD /* 360ControllerInstall.dmg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,9 +339,8 @@
 			files = (
 				1F7EC28717237BB100465DCD /* main.m in Sources */,
 				1F7EC28B17237BB100465DCD /* CAppDelegate.m in Sources */,
-				1F7EC29A17237BB100465DCD /* comp.xcdatamodeld in Sources */,
-				1F7EC29D17237BB100465DCD /* CMasterViewController.m in Sources */,
-				1F7EC2A017237BB100465DCD /* CDetailViewController.m in Sources */,
+				1F7EC2CF1724755C00465DCD /* CRosterViewController.m in Sources */,
+				1F7EC2DB1724C54500465DCD /* CPlayerCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +360,11 @@
 			target = 1F7EC27417237BB000465DCD /* comp */;
 			targetProxy = 1F7EC2AC17237BB100465DCD /* PBXContainerItemProxy */;
 		};
+		1F7EC2C71724514D00465DCD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Kal;
+			targetProxy = 1F7EC2C61724514D00465DCD /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -322,22 +374,6 @@
 				1F7EC28417237BB100465DCD /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		1F7EC29217237BB100465DCD /* MainStoryboard_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1F7EC29317237BB100465DCD /* en */,
-			);
-			name = MainStoryboard_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		1F7EC29517237BB100465DCD /* MainStoryboard_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1F7EC29617237BB100465DCD /* en */,
-			);
-			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		1F7EC2B117237BB100465DCD /* InfoPlist.strings */ = {
@@ -414,8 +450,11 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "comp/comp-Prefix.pch";
+				HEADER_SEARCH_PATHS = /Users/jeff/Documents/xcode/Kal/src;
 				INFOPLIST_FILE = "comp/comp-Info.plist";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -425,8 +464,11 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "comp/comp-Prefix.pch";
+				HEADER_SEARCH_PATHS = /Users/jeff/Documents/xcode/Kal/src;
 				INFOPLIST_FILE = "comp/comp-Info.plist";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -484,6 +526,7 @@
 				1F7EC2BB17237BB100465DCD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1F7EC2BC17237BB100465DCD /* Build configuration list for PBXNativeTarget "compTests" */ = {
 			isa = XCConfigurationList;
@@ -492,21 +535,9 @@
 				1F7EC2BE17237BB100465DCD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		1F7EC29817237BB100465DCD /* comp.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				1F7EC29917237BB100465DCD /* comp.xcdatamodel */,
-			);
-			currentVersion = 1F7EC29917237BB100465DCD /* comp.xcdatamodel */;
-			path = comp.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 1F7EC26D17237BB000465DCD /* Project object */;
 }
