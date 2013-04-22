@@ -256,7 +256,7 @@
     [request setValue:[NSString stringWithFormat:@"%d", [jsonData length]] forHTTPHeaderField:@"Content-length"];
     [request setHTTPBody:jsonData];
     
-    [[[NSURLConnection alloc] initWithRequest:request delegate:self] start];
+    [[[NSURLConnection alloc] initWithRequest:request delegate:nil] start];
 }
 
 - (void) updateGoalForPlayer:(NSNumber*)playerId game:(NSNumber*)gameId method:(NSString*)method
@@ -280,7 +280,7 @@
         [request setValue:[NSString stringWithFormat:@"%d", [jsonData length]] forHTTPHeaderField:@"Content-length"];
         [request setHTTPBody:jsonData];
         
-        [[[NSURLConnection alloc] initWithRequest:request delegate:self] start];
+        [[[NSURLConnection alloc] initWithRequest:request delegate:nil] start];
     }
 }
 
