@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CSettingsViewController : UINavigationController<UITableViewDataSource,UITableViewDelegate>
+@interface CSettingsViewController : UINavigationController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
+
+@property (strong, nonatomic) NSString* host;
 
 @end

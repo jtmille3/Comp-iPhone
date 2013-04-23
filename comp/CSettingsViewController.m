@@ -26,6 +26,9 @@
         controller.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
         
         [self pushViewController:controller animated:NO];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        self.host = [defaults stringForKey:@"host"];
     }
     return self;
 }
@@ -66,8 +69,10 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Server"];
             UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(80, 12, 216, 32)];
             textField.placeholder = @"http://localhost:8080";
+            textField.text = self.host;
             textField.autocapitalizationType = NO;
             textField.autocorrectionType = NO;
+            textField.delegate = self;
             [cell addSubview:textField];
         }
         
@@ -96,6 +101,14 @@
     NSLog(@"Clear Cache");
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    self.host = textField.text;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:self.host forKey:@"host"];
+    [defaults synchronize];
 }
 
 @end
