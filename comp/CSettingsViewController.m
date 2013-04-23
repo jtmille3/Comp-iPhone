@@ -47,25 +47,55 @@
     if(section == 0)
         return @"Server";
     else
-        return @"Cache";
+        return @"";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if(section == 0)
-        return 0;
+        return 1;
     else
-        return 0;
+        return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    if(indexPath.section == 0) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Server"];
+        if(!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Server"];
+            UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(80, 12, 216, 32)];
+            textField.placeholder = @"http://localhost:8080";
+            textField.autocapitalizationType = NO;
+            textField.autocorrectionType = NO;
+            [cell addSubview:textField];
+        }
+        
+        cell.textLabel.text = @"Host";
+        
+        return cell;
+    } else {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cache"];
+        if(!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cache"];
+        }
+        
+        cell.textLabel.text = @"Clear Cache";
+        
+        return cell;
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return indexPath.section == 1;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"Clear Cache");
     
-    // Configure the cell...
-    
-    return cell;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end
