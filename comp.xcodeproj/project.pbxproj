@@ -29,6 +29,7 @@
 		1F7EC2DB1724C54500465DCD /* CPlayerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EC2DA1724C54400465DCD /* CPlayerCell.m */; };
 		1F7EC2F91724D22000465DCD /* plus-5-m.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EC2F81724D22000465DCD /* plus-5-m.png */; };
 		1F7EC2FB1724D22F00465DCD /* minus-5-m.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EC2FA1724D22F00465DCD /* minus-5-m.png */; };
+		1F7EC2FE1726194300465DCD /* CScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EC2FD1726194300465DCD /* CScheduleViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,8 @@
 		1F7EC2DA1724C54400465DCD /* CPlayerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPlayerCell.m; sourceTree = "<group>"; };
 		1F7EC2F81724D22000465DCD /* plus-5-m.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-5-m.png"; sourceTree = "<group>"; };
 		1F7EC2FA1724D22F00465DCD /* minus-5-m.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "minus-5-m.png"; sourceTree = "<group>"; };
+		1F7EC2FC1726194300465DCD /* CScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CScheduleViewController.h; sourceTree = "<group>"; };
+		1F7EC2FD1726194300465DCD /* CScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CScheduleViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +154,8 @@
 			children = (
 				1F7EC28917237BB100465DCD /* CAppDelegate.h */,
 				1F7EC28A17237BB100465DCD /* CAppDelegate.m */,
+				1F7EC2FC1726194300465DCD /* CScheduleViewController.h */,
+				1F7EC2FD1726194300465DCD /* CScheduleViewController.m */,
 				1F7EC2CD1724755C00465DCD /* CRosterViewController.h */,
 				1F7EC2CE1724755C00465DCD /* CRosterViewController.m */,
 				1F7EC2D91724C54400465DCD /* CPlayerCell.h */,
@@ -337,6 +342,7 @@
 				1F7EC28B17237BB100465DCD /* CAppDelegate.m in Sources */,
 				1F7EC2CF1724755C00465DCD /* CRosterViewController.m in Sources */,
 				1F7EC2DB1724C54500465DCD /* CPlayerCell.m in Sources */,
+				1F7EC2FE1726194300465DCD /* CScheduleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
