@@ -24,23 +24,36 @@
     self.dataSource = self;
     self.delegate = self;
     self.title = @"Schedule";
-    
-    [self refresh:self];
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh:)];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"gear.png"] style:UIBarButtonItemStylePlain target:self action:@selector(settings:)];
-    
-    /*
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cache" style:UIBarButtonItemStylePlain target:self action:@selector(clearCache:)];
-     */
+
+    // Testing only
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    [defaults setValue:nil forKey:@"host"];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *host = [defaults valueForKey:@"host"];
+    if(host) {
+        [self refresh:self];
+    } else {
+        [self settings:self];
+    }
 }
 
 - (void) getGames
 {
-    NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:8080/service/games"]];
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    [connection start];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *host = [defaults valueForKey:@"host"];
+    if(host) {
+        NSString *url = [NSString stringWithFormat:@"%@/service/games", host];
+        NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+        [connection start];
+    }
 }
 
 - (IBAction) refresh:(id)sender {

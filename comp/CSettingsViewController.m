@@ -18,17 +18,23 @@
 {
     self = [super init];
     if (self) {
-        UITableViewController* controller = [[UITableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-        controller.title = @"Settings";
-        controller.tableView.delegate = self;
-        controller.tableView.dataSource = self;
+        self.clearCache = YES;
         
-        controller.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
+        self.tableController = [[UITableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        self.tableController.title = @"Settings";
+        self.tableController.tableView.delegate = self;
+        self.tableController.tableView.dataSource = self;
         
-        [self pushViewController:controller animated:NO];
+        self.tableController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
+        
+        [self pushViewController:self.tableController animated:NO];
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         self.host = [defaults stringForKey:@"host"];
+        
+        if(!self.host) {
+            [self.tableController.navigationItem.leftBarButtonItem setEnabled:NO];
+        }
     }
     return self;
 }
@@ -98,9 +104,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Clear Cache");
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if(self.clearCache) {
+        self.clearCache = NO;
+        
+        [self.tableController.navigationItem.leftBarButtonItem setEnabled:NO];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *host = [defaults valueForKey:@"host"];
+        NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/service/cache/reset", host]]];
+        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+        [connection start];
+    }
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -109,6 +123,22 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setValue:self.host forKey:@"host"];
     [defaults synchronize];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if(string && [string length] > 0) {
+        [self.tableController.navigationItem.leftBarButtonItem setEnabled:YES];
+    }
+    
+    return YES;
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    self.clearCache = YES;
+    [self.tableController.tableView reloadData];
+    [self.tableController.navigationItem.leftBarButtonItem setEnabled:YES];
 }
 
 @end

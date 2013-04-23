@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CSettingsViewController : UINavigationController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
+@interface CSettingsViewController : UINavigationController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,NSURLConnectionDataDelegate>
 
+@property (strong, nonatomic) UITableViewController *tableController;
 @property (strong, nonatomic) NSString* host;
+@property (nonatomic) BOOL clearCache;
 
 @end

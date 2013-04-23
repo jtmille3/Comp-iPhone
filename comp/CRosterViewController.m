@@ -30,7 +30,9 @@
         NSMutableArray *awayPlayers = [self.game valueForKey:@"awayPlayers"];
         
         if(!homePlayers || !awayPlayers) {
-            NSString* url = [NSString stringWithFormat:@"http://localhost:8080/service/games/%@/players", gameId];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            NSString *host = [defaults valueForKey:@"host"];
+            NSString* url = [NSString stringWithFormat:@"%@/service/games/%@/players", host, gameId];
             NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString: url]];
             NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
             [connection start];
@@ -236,7 +238,9 @@
         return;
     }
     
-    NSString* url = [NSString stringWithFormat:@"http://localhost:8080/service/games/%@/score", [self.game valueForKey:@"gameId"]];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *host = [defaults valueForKey:@"host"];
+    NSString* url = [NSString stringWithFormat:@"%@/service/games/%@/score", host, [self.game valueForKey:@"gameId"]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"PUT"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
@@ -259,7 +263,9 @@
         return;
     }
     
-    NSString* url = @"http://localhost:8080/service/goals";
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *host = [defaults valueForKey:@"host"];
+    NSString* url = [NSString stringWithFormat:@"%@/service/goals", host];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:method];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
