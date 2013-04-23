@@ -8,10 +8,11 @@
 
 #import "CScheduleViewController.h"
 #import "CRosterViewController.h"
+#import "CSettingsViewController.h"
 
 @interface CScheduleViewController ()
 - (void) getGames;
-- (IBAction)reload:(id)sender;
+- (IBAction) refresh:(id)sender;
 @end
 
 @implementation CScheduleViewController
@@ -22,12 +23,17 @@
 {
     self.dataSource = self;
     self.delegate = self;
-    self.title = @"Soccer Calendar";
+    self.title = @"Schedule";
     
-    [self reload:self];
+    [self refresh:self];
+
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh:)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"gear.png"] style:UIBarButtonItemStylePlain target:self action:@selector(settings:)];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Reload" style:UIBarButtonItemStylePlain target:self action:@selector(reload:)];
+    /*
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cache" style:UIBarButtonItemStylePlain target:self action:@selector(clearCache:)];
+     */
 }
 
 - (void) getGames
@@ -37,7 +43,7 @@
     [connection start];
 }
 
-- (IBAction)reload:(id)sender {
+- (IBAction) refresh:(id)sender {
     self.games = nil;
     self.json = nil;
     self.buffer = [[NSMutableData alloc] init];
@@ -46,9 +52,10 @@
     [self getGames];
 }
 
-- (IBAction)clearCache:(id)sender
+- (IBAction) settings:(id)sender
 {
-    NSLog(@"Clear Cache");
+    CSettingsViewController *settingsController = [[CSettingsViewController alloc] init];
+    [self presentViewController:settingsController animated:YES completion:nil];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data

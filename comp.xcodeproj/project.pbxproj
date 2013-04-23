@@ -30,6 +30,8 @@
 		1F7EC2F91724D22000465DCD /* plus-5-m.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EC2F81724D22000465DCD /* plus-5-m.png */; };
 		1F7EC2FB1724D22F00465DCD /* minus-5-m.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EC2FA1724D22F00465DCD /* minus-5-m.png */; };
 		1F7EC2FE1726194300465DCD /* CScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EC2FD1726194300465DCD /* CScheduleViewController.m */; };
+		1F7EC301172621BF00465DCD /* CSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EC300172621BF00465DCD /* CSettingsViewController.m */; };
+		1FC8D75B1726307800F1BE0F /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FC8D75A1726307800F1BE0F /* gear.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,9 @@
 		1F7EC2FA1724D22F00465DCD /* minus-5-m.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "minus-5-m.png"; sourceTree = "<group>"; };
 		1F7EC2FC1726194300465DCD /* CScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CScheduleViewController.h; sourceTree = "<group>"; };
 		1F7EC2FD1726194300465DCD /* CScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CScheduleViewController.m; sourceTree = "<group>"; };
+		1F7EC2FF172621BF00465DCD /* CSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSettingsViewController.h; sourceTree = "<group>"; };
+		1F7EC300172621BF00465DCD /* CSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSettingsViewController.m; sourceTree = "<group>"; };
+		1FC8D75A1726307800F1BE0F /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +163,8 @@
 				1F7EC2FD1726194300465DCD /* CScheduleViewController.m */,
 				1F7EC2CD1724755C00465DCD /* CRosterViewController.h */,
 				1F7EC2CE1724755C00465DCD /* CRosterViewController.m */,
+				1F7EC2FF172621BF00465DCD /* CSettingsViewController.h */,
+				1F7EC300172621BF00465DCD /* CSettingsViewController.m */,
 				1F7EC2D91724C54400465DCD /* CPlayerCell.h */,
 				1F7EC2DA1724C54400465DCD /* CPlayerCell.m */,
 				1F7EC28117237BB100465DCD /* Supporting Files */,
@@ -168,6 +175,7 @@
 		1F7EC28117237BB100465DCD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1FC8D75A1726307800F1BE0F /* gear.png */,
 				1F7EC2FA1724D22F00465DCD /* minus-5-m.png */,
 				1F7EC2F81724D22000465DCD /* plus-5-m.png */,
 				1F7EC28217237BB100465DCD /* comp-Info.plist */,
@@ -304,6 +312,7 @@
 				1F7EC2CA1724520600465DCD /* Kal.bundle in Resources */,
 				1F7EC2F91724D22000465DCD /* plus-5-m.png in Resources */,
 				1F7EC2FB1724D22F00465DCD /* minus-5-m.png in Resources */,
+				1FC8D75B1726307800F1BE0F /* gear.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +352,7 @@
 				1F7EC2CF1724755C00465DCD /* CRosterViewController.m in Sources */,
 				1F7EC2DB1724C54500465DCD /* CPlayerCell.m in Sources */,
 				1F7EC2FE1726194300465DCD /* CScheduleViewController.m in Sources */,
+				1F7EC301172621BF00465DCD /* CSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
