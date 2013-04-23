@@ -35,10 +35,11 @@
             NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
             [connection start];
             
-            [self.game setValue:[NSNumber numberWithBool:YES] forKey:@"available"];
-            /*
-            [self played];
-             */
+            NSNumber *available = [self.game valueForKey:@"available"];
+            if(![available boolValue]) {
+                [self.game setValue:[NSNumber numberWithBool:YES] forKey:@"available"];
+                [self played];
+            }
         } else {
             self.homePlayers = homePlayers;
             self.awayPlayers = awayPlayers;
@@ -247,27 +248,25 @@
 
 - (void) updateGoalForPlayer:(NSNumber*)playerId game:(NSNumber*)gameId method:(NSString*)method
 {
-    if([playerId integerValue] > 0) {
-        NSError *error;
-        NSMutableDictionary* goal = [NSMutableDictionary dictionary];
-        [goal setValue:playerId forKey:@"playerId"];
-        [goal setValue:gameId forKey:@"gameId"];
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:goal options:NSJSONWritingPrettyPrinted error:&error];
-        
-        if(error) {
-            NSLog(@"%@", error);
-            return;
-        }
-        
-        NSString* url = @"http://localhost:8080/service/goals";
-        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
-        [request setHTTPMethod:method];
-        [request setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
-        [request setValue:[NSString stringWithFormat:@"%d", [jsonData length]] forHTTPHeaderField:@"Content-length"];
-        [request setHTTPBody:jsonData];
-        
-        [[[NSURLConnection alloc] initWithRequest:request delegate:nil] start];
+    NSError *error;
+    NSMutableDictionary* goal = [NSMutableDictionary dictionary];
+    [goal setValue:playerId forKey:@"playerId"];
+    [goal setValue:gameId forKey:@"gameId"];
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:goal options:NSJSONWritingPrettyPrinted error:&error];
+    
+    if(error) {
+        NSLog(@"%@", error);
+        return;
     }
+    
+    NSString* url = @"http://localhost:8080/service/goals";
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+    [request setHTTPMethod:method];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
+    [request setValue:[NSString stringWithFormat:@"%d", [jsonData length]] forHTTPHeaderField:@"Content-length"];
+    [request setHTTPBody:jsonData];
+    
+    [[[NSURLConnection alloc] initWithRequest:request delegate:nil] start];
 }
 
 @end
