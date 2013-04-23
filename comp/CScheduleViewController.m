@@ -47,9 +47,9 @@
 
 #pragma mark KalDataSource
 
-- (void)presentingDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate delegate:(id<KalDataSourceCallbacks>)delegate
+- (void)presentingDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate delegate:(id<KalDataSourceCallbacks>)kalDelegate
 {
-    [delegate loadedDataSource:self];
+    [kalDelegate loadedDataSource:self];
 }
 
 - (NSArray *)markedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate
@@ -79,7 +79,7 @@
     }
     
     self.games = [[NSMutableArray alloc] init];
-    NSDate *selectedDate = [self selectedDate];
+    NSDate *thisDate = [self selectedDate];
     
     NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
     [fmt setDateFormat:@"MM/dd/yy hh:mm"];
@@ -91,7 +91,7 @@
         NSDateComponents* components = [calendar components:flags fromDate:date];
         NSDate* dateOnly = [calendar dateFromComponents:components];
         
-        if([selectedDate isEqualToDate:dateOnly]) {
+        if([thisDate isEqualToDate:dateOnly]) {
             [self.games addObject: value];
         }
     }
@@ -114,12 +114,12 @@
 
 #pragma mark UITableViewDataSource protocol conformance
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)thisTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     const NSDictionary *game = [self.games objectAtIndex:indexPath.item];
     
     static NSString* CellIdentifier = @"Game";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [thisTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if(!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
