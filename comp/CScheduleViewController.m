@@ -10,7 +10,8 @@
 #import "CRosterViewController.h"
 
 @interface CScheduleViewController ()
-
+- (void) getGames;
+- (IBAction)reload:(id)sender;
 @end
 
 @implementation CScheduleViewController
@@ -19,14 +20,35 @@
 
 - (void) viewDidLoad
 {
-    self.buffer = [[NSMutableData alloc] init];
     self.dataSource = self;
     self.delegate = self;
     self.title = @"Soccer Calendar";
     
+    [self reload:self];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Reload" style:UIBarButtonItemStylePlain target:self action:@selector(reload:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cache" style:UIBarButtonItemStylePlain target:self action:@selector(clearCache:)];
+}
+
+- (void) getGames
+{
     NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:8080/service/games"]];
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     [connection start];
+}
+
+- (IBAction)reload:(id)sender {
+    self.games = nil;
+    self.json = nil;
+    self.buffer = [[NSMutableData alloc] init];
+    [self reloadData];
+    
+    [self getGames];
+}
+
+- (IBAction)clearCache:(id)sender
+{
+    NSLog(@"Clear Cache");
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
